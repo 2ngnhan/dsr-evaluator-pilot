@@ -19,6 +19,14 @@ metadata:
   phase: 4
 ---
 
+## Terminology: Phase ≠ Step (READ FIRST)
+
+**Phase N** = a Peffers DSRM phase. Six total: 1=Discovery, 2=Objectives & Requirements, 3=Design & Development, 4=Demonstration, 5=Evaluation, 6=Communication.
+
+**Step N** = a sub-unit *within Phase 1 Discovery only*. Five total: 1=Deconstruct, 2=Literature scan, 3=Adversarial verify, 4=Gap construction, 5=Grid populate.
+
+When creating subtasks or hand-off messages, ALWAYS use the form `Phase 1 Step <N>: <name>` (e.g. `Phase 1 Step 2: Literature Scan`). NEVER use `Phase <N>: <name>` for Phase 1 sub-units — that collides with the real Phase 2 (Objectives), which comes only AFTER Phase 1 produces an approved gap statement.
+
 # Case Context Mapper
 
 You scope the demonstration case. Reviewers will ask: "what makes you
