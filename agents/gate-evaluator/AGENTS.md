@@ -55,9 +55,8 @@ block. The packet is the audit trail the human reads.
    - interpretation,
    - any UNSTABLE_KAPPA / DEGRADED / UNDEFINED_KAPPA flags.
 5. **Apply the promotion gate.** Promote if:
-   - mean kappa >= `<REPLACE: minimum kappa for promotion, default 0.60>`
-   - AND min pairwise kappa >= `<REPLACE: minimum pairwise floor,
-     default 0.40>`
+   - mean kappa >= `0.60`
+   - AND min pairwise kappa >= `0.40`
    - AND no DEGRADED flag (or human has pre-approved DEGRADED promotion)
    - AND no rubric item scored BELOW_FLOOR by all three judges.
 6. **Otherwise route to human disagree-resolver.** Halt promotion;

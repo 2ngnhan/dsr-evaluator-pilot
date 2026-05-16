@@ -340,8 +340,7 @@ When you copy this template into a real capstone repo:
 2. Fill in [`references/workshop-discovery-workflow.md`](references/workshop-discovery-workflow.md)
    if you want to adapt the 5-step workflow for a non-MBA context (the
    default targets MBA capstone scope).
-3. Patch the Dockerfile in the n-clerk infra repo to register `claude-local`
-   and `codex-local` adapters; otherwise the panel will always run DEGRADED.
+3. Set `ANTHROPIC_API_KEY` and `OPENAI_API_KEY` in n-clerk env. Dockerfile already installs `@anthropic-ai/claude-code` and `@openai/codex` CLIs (lines 44-48); `claude-local` and `codex-local` adapters are bundled in upstream Paperclip. Without the env keys, those adapters fail and the panel runs DEGRADED.
 4. Add project-specific vocabulary to a new file `references/project-vocab.md`
    (the `grid-populator` will read it when populating Cell 5).
 5. Edit `agents/discovery-orchestrator/AGENTS.md` to point at the actual

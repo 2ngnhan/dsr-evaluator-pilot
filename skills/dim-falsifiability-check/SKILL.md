@@ -71,8 +71,8 @@ specific rule IDs that failed.
 ## Refuse-if-empty
 
 If `references/dim-framework.md` is empty, or any of the placeholders
-`<REPLACE: minimum average score, default 3.5>`,
-`<REPLACE: minimum per-question floor, default 2>` are still unfilled,
+`3.5`,
+`2` are still unfilled,
 refuse the check and post a message:
 
 > dim-framework.md is not yet curated. The falsifiability rubric depends
