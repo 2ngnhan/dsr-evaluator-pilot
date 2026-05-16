@@ -88,3 +88,29 @@ For each metric:
 - [`references/dim-framework.md`](../../references/dim-framework.md) (Dim 02)
 - [`references/hevner-eval-axes.md`](../../references/hevner-eval-axes.md)
   (Instrument validity axis)
+
+## Closing (Paperclip lifecycle — MUST do at end of every run)
+
+After your operating loop completes, you MUST PATCH the issue with an explicit disposition. Without this, Paperclip halts the issue with `successful_run_missing_state` and queues a corrective handoff wake. The `paperclip` skill is auto-bundled in every company.
+
+```
+PATCH /api/issues/{{PAPERCLIP_TASK_ID}}
+Headers: Authorization: Bearer $PAPERCLIP_API_KEY, X-Paperclip-Run-Id: $PAPERCLIP_RUN_ID
+Content-Type: application/json
+
+{
+  "status": "done",
+  "comment": "<your output, formatted per the Output format section above>"
+}
+```
+
+Choose `status` by your role:
+
+| Role | Disposition |
+|---|---|
+| Phase specialist (single-shot internal step, e.g. literature-scanner, adversarial-verifier, judges) | `done` |
+| Phase-final / human-gate step (gap-constructor, grid-populator, gate-evaluator) | `in_review` |
+| Orchestrator that just delegated subtasks (discovery-orchestrator) | `delegated follow-up` |
+| Cannot complete (blocked) | `blocked` (include blocker reason in comment) |
+
+For phase-final and gate-evidence outputs, the `comment` body MUST follow the bilingual structure (`## English (primary)` + `## Tiếng Việt (summary)`) defined in your Output format above. For intermediate handoffs, English-only is fine.
