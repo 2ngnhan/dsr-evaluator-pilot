@@ -10,7 +10,7 @@ description: >
 
 # Bootstrap guardrail
 
-**Source of truth.** [`references/bootstrap-circularity-note.md`](../../references/bootstrap-circularity-note.md).
+**Source of truth.** [`references/bootstrap-circularity-note.md`](references/bootstrap-circularity-note.md).
 Read first for the rationale.
 
 ## What this skill does
