@@ -25,8 +25,8 @@ aggregates with Cohen's kappa across the three judges.
 | 5 | Fully addressed, defensible to external reviewer |
 
 A phase exits only if the average across all active dimensions is
-`>= <REPLACE: minimum average score, default 3.5>` AND no single rubric
-question scores `< <REPLACE: minimum per-question floor, default 2>`.
+`>= 3.5` AND no single rubric
+question scores `< 2`.
 
 ## Dim 01 — Falsifiability
 
@@ -162,12 +162,12 @@ across the active dimensions before computing kappa (so P1 pools F1-F5 + S1-S5
 
 ## TEMPLATE placeholders (you must fill before this template is operational)
 
-- `<REPLACE: minimum average score, default 3.5>` — phase exit floor.
-- `<REPLACE: minimum per-question floor, default 2>` — no question may
+- `3.5` — phase exit floor.
+- `2` — no question may
   score below this even if the average passes.
-- `<REPLACE: minimum kappa for promotion, default 0.60>` — kappa below
+- `0.60` — kappa below
   this routes to human disagree-resolver.
-- `<REPLACE: minimum items for kappa stability, default 10>` — below this,
+- `10` — below this,
   the kappa value is flagged as unstable.
 
 The `bootstrap-guardrail` skill refuses operation if any of the above

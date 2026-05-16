@@ -38,7 +38,7 @@ Steps:
 1. **Validate inputs.**
    - If N < 3, halt with `INSUFFICIENT_JUDGES` (this template requires 3
      for cross-model independence).
-   - If M < `<REPLACE: minimum items for kappa stability, default 10>`,
+   - If M < `10`,
      compute kappa anyway but flag `UNSTABLE_KAPPA` (low item count
      produces high-variance estimates).
 2. **Compute pairwise weighted kappa.** For each pair of judges (i, j),
@@ -66,15 +66,15 @@ Steps:
    | 0.81 - 1.00 | Near-perfect |
 
 5. **Apply this template's promotion gate.** Promote the artifact if
-   `mean_kappa >= <REPLACE: minimum kappa for promotion, default 0.60>`
-   AND `min_kappa >= <REPLACE: minimum pairwise floor, default 0.40>`.
+   `mean_kappa >= 0.60`
+   AND `min_kappa >= 0.40`.
    Otherwise route to human disagree-resolver.
 
 ## Hard rules
 
 - **N < 3 judges.** Halt with `INSUFFICIENT_JUDGES`. This template
   requires cross-model independence for the kappa to be meaningful.
-- **M < <REPLACE: minimum items, default 10>.** Compute kappa but flag
+- **M < 10.** Compute kappa but flag
   `UNSTABLE_KAPPA: low item count, kappa estimate has high variance`.
   Always surface this flag in the gate evidence packet.
 - **Identical scores across all judges (every cell agrees).** The kappa

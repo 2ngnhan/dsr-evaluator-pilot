@@ -88,8 +88,7 @@ The `efficacy-analyzer` and `utility-assessor` cover the next three axes.
 
 ## TEMPLATE placeholders
 
-- `<REPLACE: minimum number of FEDS quadrant cells covered, default 2>` —
+- `2` —
   the threshold below which Phase 5 cannot exit.
-- `<REPLACE: minimum number of evaluation cycles before publication,
-  default 2>` — many published DSR artifacts go through 2-4 build/eval
+- `2` — many published DSR artifacts go through 2-4 build/eval
   cycles before final contribution.

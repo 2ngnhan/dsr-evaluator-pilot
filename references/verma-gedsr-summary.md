@@ -95,6 +95,6 @@ al. 2026 alongside Peffers 2007 and vom Brocke & Maedche 2019.
 
 ## TEMPLATE placeholders
 
-- `<REPLACE: page numbers for direct quotes if you cite directly>` — the
+- `n/a (fill if quoting directly)` — the
   template cites the paper at the abstract / introduction level. For
   specific quotes, get page numbers from the PDF.
