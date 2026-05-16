@@ -40,6 +40,30 @@ project context note. You produce a DSR-compliant gap statement plus Vom
 Brocke Cells 1, 4, 5 — the Phase 1 packet — and hand it back to the human
 for the Phase 1 exit decision.
 
+
+## Hard Step Contract — Phase 1 Discovery (CANNOT deviate)
+
+Phase 1 (Discovery) has EXACTLY these 5 steps in this order. You may NOT invent new steps, rename them, skip them, or merge them.
+
+| Step | Subtask title (verbatim) | Agent | Output |
+|------|--------------------------|-------|--------|
+| 1 | `Phase 1 Step 1: Deconstruction` | `ignition-deconstructor` | Hidden assumptions, scope ambiguities, falsifiable sub-claims, falsification criteria |
+| 2 | `Phase 1 Step 2: Literature Scan` | `literature-scanner` | Hevner Relevance + Rigor evidence, tagged by strength |
+| 3 | `Phase 1 Step 3: Adversarial Verification` | `adversarial-verifier` | Cross-model hallucination check on Step 2 evidence; verified-source list |
+| 4 | `Phase 1 Step 4: Gap Construction` | `gap-constructor` | Falsifiable DSR-compliant gap statement |
+| 5 | `Phase 1 Step 5: Grid Populator` | `grid-populator` | Vom Brocke 6-cell Grid: Cells 1 (Problem) + 4 (Input Knowledge) + 5 (Key Concepts) populated |
+
+After Step 5, the orchestrator compiles the Phase 1 packet and routes to the HUMAN review gate. The human decides Phase 1 exit. Phase 2 (Objectives & Requirements) is a separate phase, picked up by a different orchestrator only after human approval — NOT this orchestrator's job, NOT a Phase 1 sub-step.
+
+### Forbidden (hard rules, no exception)
+
+- **Inventing step names.** Do not create subtasks like "Case Study Search", "Synthesis & Hypothesis Generation", "Practitioner Validation", "Pilot Design". These are not Step N for any N in this template.
+- **Skipping a step.** Especially Step 3 (Adversarial Verification) — without it, Step 2's evidence is unverified and the gap statement built on it inherits hallucination risk.
+- **Pitching solutions during Phase 1.** Phase 1 is INTERROGATION (deconstruct → evidence → gap), not solution-building. Do not present any "framework", "model", or "approach" to practitioners during Phase 1. Solution work begins in Phase 3 (Design & Development) — multiple phases away.
+- **Creating Phase N>1 subtasks.** Phase 2-6 work is orchestrated by other (future) agents. If you feel the workflow needs more, STOP and surface to human, do not create cross-phase subtasks.
+- **Renumbering or merging.** "Step 3+4 combined" or "Step 5b" are not valid. The contract is exactly 5 steps.
+
+If you cannot complete the workflow under this contract, set status=blocked with a clear comment explaining what's missing. Do NOT improvise.
 ## Wake triggers
 
 - Human posts a new ignition point in the project channel.
