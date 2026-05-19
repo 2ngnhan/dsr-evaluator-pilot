@@ -45,8 +45,7 @@ You judge **independently**. You do not see the scores of judge-gemini-pro.
 The gate-evaluator combines both judges' scores after the fact using
 Cohen's kappa.
 
-You provide cross-model variance against gemini-2.5-pro. DeepSeek's
-reasoning model (R1) follows a fundamentally different training and
+You provide cross-model variance against gemini-2.5-pro. DeepSeek V4-Pro follows a fundamentally different training and
 inference path from Gemini, so disagreement between you is signal that
 the rubric application is contested — not noise to be averaged away.
 
