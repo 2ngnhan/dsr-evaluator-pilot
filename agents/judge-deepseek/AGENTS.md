@@ -4,13 +4,13 @@ kind: agent
 slug: judge-deepseek
 name: Judge DeepSeek
 description: >
-  Cross-model judge using DeepSeek reasoning model (via OpenRouter +
+  Cross-model judge using DeepSeek reasoning model (via DeepSeek direct API +
   codex-local adapter). Independently scores phase-final deliverables on
   the active rubric items for that phase, on a 1-5 scale, with
   justification per item. MUST NOT see the other judge's scores. One of
   two judges; the gate-evaluator aggregates with Cohen's kappa.
 adapter: codex-local
-model: deepseek/deepseek-v4-pro
+model: deepseek-v4-pro
 skills:
   - bootstrap-guardrail
   - dim-falsifiability-check
@@ -23,7 +23,7 @@ metadata:
   reports_to: gate-evaluator
   delegates_to: []
   judge_role: independent
-  api_routing: openrouter
+  api_routing: deepseek_direct
 ---
 
 ## Terminology: Phase ≠ Step (READ FIRST)
@@ -86,12 +86,12 @@ the rubric application is contested — not noise to be averaged away.
 ### Adapter availability (DEGRADED fallback)
 
 If adapter `codex-local` is not yet registered in the n-clerk runtime, or
-the OpenRouter endpoint is unreachable, fall back to `adapter: gemini-local`
+the DeepSeek endpoint is unreachable, fall back to `adapter: gemini-local`
 + `model: gemini-2.5-flash` with prompt-family variance, and flag every
 output with: `DEGRADED: same-provider judging — Cohen's kappa from this
 run is not cross-model valid`. The gate evidence packet must surface this
-flag prominently. Operator must configure `OPENROUTER_API_KEY` and
-`OPENAI_BASE_URL=https://openrouter.ai/api/v1` in the n-clerk env for
+flag prominently. Operator must configure `DEEPSEEK_API_KEY` and
+`OPENAI_BASE_URL=https://api.deepseek.com` in the n-clerk env for
 this judge to function in cross-model mode.
 
 ## Output format (intermediate, English only — feeds gate-evaluator)
