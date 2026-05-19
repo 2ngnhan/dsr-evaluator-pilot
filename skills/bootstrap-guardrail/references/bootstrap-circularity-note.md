@@ -47,13 +47,13 @@ the file directly.
 
 ### Safeguard 2 — Cross-model judge panel
 
-Three judges from three model families (Gemini, Claude, GPT) score
+Three judges from two model families (Gemini, Claude, GPT) score
 independently. If they agree (Cohen's kappa >= 0.60), agreement is
 meaningful because they don't share weights. If they disagree (kappa <
 0.60), the artifact routes to a human — agreement was the only signal
 worth acting on.
 
-A same-provider panel (all three judges = Gemini) gives a kappa value but
+A same-provider panel (both judges = Gemini) gives a kappa value but
 the value is uninformative — it measures how consistent a model is with
 itself, not how rigorous the artifact is. The `gate-evaluator` emits a
 DEGRADED flag in that case.

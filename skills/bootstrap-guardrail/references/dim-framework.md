@@ -12,7 +12,7 @@ Each dimension has:
 - the agents and skills that consume it.
 
 The judge panel scores against the rubric questions. The gate-evaluator
-aggregates with Cohen's kappa across the three judges.
+aggregates with Cohen's kappa across the two judges.
 
 ## Score interpretation (applies to every dimension)
 
@@ -151,7 +151,7 @@ P5 Evaluation        *        *         *           *          *          *
 P6 Communication                                               *          *
 ```
 
-A phase that has only one active dimension still requires all three judges
+A phase that has only one active dimension still requires both judges
 to score independently (the kappa calculation needs N >= 3 raters minimum
 to be meaningful, and N >= 10 items minimum to be stable — see
 `cohens-kappa` skill).

@@ -120,11 +120,10 @@ dimensions for that phase, using the rubrics in
 
 ```
 judge-gemini-pro    (adapter: gemini-local,  model: gemini-2.5-pro)
-judge-claude        (adapter: claude-local,    model: claude-opus-4-7)
-judge-gpt           (adapter: codex-local,    model: gpt-5)
+judge-deepseek      (adapter: codex-local,    model: deepseek/deepseek-r1, routed via OpenRouter)
 ```
 
-The `gate-evaluator` agent computes Cohen's weighted kappa across the three
+The `gate-evaluator` agent computes Cohen's weighted kappa across the two
 judge score sets using the [`cohens-kappa`](skills/cohens-kappa/SKILL.md)
 skill. `k >= 0.60` promotes the artifact to the next phase; `k < 0.60` routes
 to the human `disagree-resolver` (the human author, in this template).
@@ -169,8 +168,7 @@ Phase 6 — Communication:
 
 Cross-cutting (gate panel):
   judge-gemini-pro            (gemini-2.5-pro)
-  judge-claude                (claude-opus-4-7)
-  judge-gpt                   (gpt-5)
+  judge-deepseek              (deepseek-r1 via OpenRouter)
   gate-evaluator              (gemini-2.5-pro)
 ```
 

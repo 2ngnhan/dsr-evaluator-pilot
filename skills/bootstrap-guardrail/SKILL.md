@@ -28,7 +28,7 @@ catches the failure mode where the human hasn't actually curated them yet.
 ## Files this skill protects
 
 The following files are the ground truth this company evaluates against.
-The guardrail checks all three on every invocation:
+The guardrail checks both on every invocation:
 
 1. `references/dim-framework.md` — the six rigor dimensions and rubrics.
 2. `references/workshop-discovery-workflow.md` — the Phase 1 workflow.
@@ -101,7 +101,7 @@ This applies to all 25 agents, including:
 
 - Phase orchestrators (discovery-orchestrator).
 - Phase specialists (literature-scanner, etc.).
-- Judges (judge-gemini-pro, judge-claude, judge-gpt).
+- Judges (judge-gemini-pro and judge-deepseek).
 - The gate-evaluator itself.
 
 ## Why this is more than a check

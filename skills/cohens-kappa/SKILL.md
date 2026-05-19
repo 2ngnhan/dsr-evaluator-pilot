@@ -14,7 +14,7 @@ agreement with provision for scaled disagreement or partial credit.
 *Psychological Bulletin*, 70(4), 213-220.
 
 This skill operationalizes weighted kappa for the cross-model judge panel
-in this template. The panel has three judges (Gemini Pro, Claude Opus, GPT-5)
+in this template. The panel has two judges (Gemini Pro, Claude Opus, GPT-5)
 each scoring M rubric items on a 1-5 ordinal scale.
 
 ## Why weighted kappa, not unweighted
@@ -29,7 +29,7 @@ for rubric scoring.
 
 Inputs:
 
-- `judges`: list of N >= 3 judges, each producing one score per item.
+- `judges`: list of N >= 2 judges, each producing one score per item.
 - `items`: list of M rubric items being scored.
 - `scores[judge_i][item_j]`: integer in {1, 2, 3, 4, 5}.
 
@@ -49,7 +49,7 @@ Steps:
      `w(score_i, score_j)` for items.
    - Expected weighted agreement `p_e` from the marginal distributions.
    - `kappa(i,j) = (p_o - p_e) / (1 - p_e)`.
-3. **Aggregate across all pairs.** For N=3 judges this yields three
+3. **Aggregate across all pairs.** For N=2 judges this yields three
    pairwise kappas. Report:
    - mean kappa across all pairs (primary number),
    - min kappa across pairs (worst-case agreement),
@@ -72,13 +72,13 @@ Steps:
 
 ## Hard rules
 
-- **N < 3 judges.** Halt with `INSUFFICIENT_JUDGES`. This template
+- **N < 2 judges.** Halt with `INSUFFICIENT_JUDGES`. This template
   requires cross-model independence for the kappa to be meaningful.
 - **M < 10.** Compute kappa but flag
   `UNSTABLE_KAPPA: low item count, kappa estimate has high variance`.
   Always surface this flag in the gate evidence packet.
 - **Identical scores across all judges (every cell agrees).** The kappa
-  is 1.0 but this can indicate the panel is degenerate (e.g., all three
+  is 1.0 but this can indicate the panel is degenerate (e.g., both
   judges are the same model under DEGRADED mode). Cross-check whether
   DEGRADED is flagged; if so, do not treat kappa = 1 as meaningful.
 - **Ties in marginal distribution producing `1 - p_e = 0`.** Kappa is
@@ -156,9 +156,9 @@ default floor (0.60 mean, 0.40 min), promotion = yes.
 
 - **Unweighted kappa on ordinal data.** Penalizes 1-vs-5 the same as
   1-vs-2. Use weighted kappa always for 1-5 rubrics.
-- **Fleiss kappa with N=3.** Fleiss is for fixed raters across items, not
+- **Fleiss kappa with N=2.** Fleiss is for fixed raters across items, not
   the right generalization for this template. Pairwise weighted kappa
   averaged across pairs is the simpler and more interpretable choice for
-  N=3.
+  N=2.
 - **Reporting only mean kappa.** Always report min kappa too — one judge
   drifting from the other two is operationally important.

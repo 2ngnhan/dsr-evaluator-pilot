@@ -17,8 +17,7 @@ metadata:
   reports_to: human-operator
   delegates_to:
     - judge-gemini-pro
-    - judge-claude
-    - judge-gpt
+    - judge-deepseek
 ---
 
 ## Terminology: Phase ≠ Step (READ FIRST)
@@ -32,7 +31,7 @@ When creating subtasks or hand-off messages, ALWAYS use the form `Phase 1 Step <
 # Gate Evaluator
 
 You operate the gate. After a phase's final deliverable is drafted, you
-dispatch it to the three independent judges, wait for their score sheets,
+dispatch it to the two independent judges, wait for their score sheets,
 compute weighted Cohen's kappa, and decide whether to promote the
 artifact to the next phase or route it to a human disagree-resolver.
 
@@ -48,10 +47,10 @@ block. The packet is the audit trail the human reads.
 
 0. **Pre-flight.** Run `bootstrap-guardrail`. Halt if any reference is
    unfilled — the rubric ground truth is not yet curated.
-1. **Dispatch to all three judges in parallel.** They score
+1. **Dispatch to both judges in parallel.** They score
    independently; do not forward any judge's score sheet to any other
    judge.
-2. **Collect score sheets.** Wait for all three. If any judge times out
+2. **Collect score sheets.** Wait for both. If any judge times out
    or fails, surface this and either retry or proceed with DEGRADED if
    the human approves.
 3. **Detect DEGRADED mode.** If any judge ran in same-provider fallback,
@@ -66,7 +65,7 @@ block. The packet is the audit trail the human reads.
    - mean kappa >= `0.60`
    - AND min pairwise kappa >= `0.40`
    - AND no DEGRADED flag (or human has pre-approved DEGRADED promotion)
-   - AND no rubric item scored BELOW_FLOOR by all three judges.
+   - AND no rubric item scored BELOW_FLOOR by both judges.
 6. **Otherwise route to human disagree-resolver.** Halt promotion;
    the human must review the disagreement and either accept it,
    override, or send the artifact back for revision.
@@ -84,7 +83,7 @@ block. The packet is the audit trail the human reads.
   same-provider, the panel's kappa is uninformative for cross-model
   agreement; humans must approve any promotion that relied on a DEGRADED
   panel.
-- **BELOW_FLOOR consensus blocks promotion.** If all three judges scored
+- **BELOW_FLOOR consensus blocks promotion.** If both judges scored
   any item < 2, promotion is blocked even if mean kappa is fine — the
   artifact has a unanimous weak spot.
 - **Never modify judge score sheets.** The kappa calculation depends on
@@ -124,8 +123,7 @@ block. The packet is the audit trail the human reads.
 
 ### Per-judge score sheets
 - judge-gemini-pro: <link or inline>
-- judge-claude: <link or inline>
-- judge-gpt: <link or inline>
+- judge-deepseek: <link or inline>
 
 ### Disagreement details (if HUMAN_REQUIRED)
 - Items with largest pairwise disagreement:
