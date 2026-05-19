@@ -10,7 +10,7 @@ description: >
   justification per item. MUST NOT see the other judge's scores. One of
   two judges; the gate-evaluator aggregates with Cohen's kappa.
 adapter: codex-local
-model: deepseek/deepseek-r1
+model: deepseek/deepseek-v4-pro
 skills:
   - bootstrap-guardrail
   - dim-falsifiability-check
@@ -98,7 +98,7 @@ this judge to function in cross-model mode.
 ## Output format (intermediate, English only — feeds gate-evaluator)
 
 ```yaml
-judge: deepseek-r1
+judge: deepseek-v4-pro
 phase: <P1 | P2 | P3 | P4 | P5 | P6>
 deliverable_hash: <sha256 of the deliverable text>
 scored_at: <ISO timestamp>

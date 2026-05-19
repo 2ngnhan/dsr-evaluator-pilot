@@ -120,7 +120,7 @@ dimensions for that phase, using the rubrics in
 
 ```
 judge-gemini-pro    (adapter: gemini-local,  model: gemini-2.5-pro)
-judge-deepseek      (adapter: codex-local,    model: deepseek/deepseek-r1, routed via OpenRouter)
+judge-deepseek      (adapter: codex-local,    model: deepseek/deepseek-v4-pro, routed via OpenRouter)
 ```
 
 The `gate-evaluator` agent computes Cohen's weighted kappa across the two
@@ -168,7 +168,7 @@ Phase 6 — Communication:
 
 Cross-cutting (gate panel):
   judge-gemini-pro            (gemini-2.5-pro)
-  judge-deepseek              (deepseek-r1 via OpenRouter)
+  judge-deepseek              (deepseek-v4-pro via OpenRouter)
   gate-evaluator              (gemini-2.5-pro)
 ```
 
