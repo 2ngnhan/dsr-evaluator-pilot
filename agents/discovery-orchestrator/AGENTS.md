@@ -10,6 +10,7 @@ description: >
   talks directly to the human.
 adapter: gemini-local
 model: gemini-2.5-pro
+role: ceo
 skills:
   - bootstrap-guardrail
   - grid-6cell-populator
